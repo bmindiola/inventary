@@ -4,6 +4,7 @@ public class Product {
     private String productName;
     private int unitsInStock;
     private double unitPrice;
+    private boolean isActive = true;
 
     //Constructor predeterminado, sin parámetros
     public Product(){
@@ -37,6 +38,11 @@ public class Product {
         return unitPrice;
     }
 
+    //Método para obtener si el producto está activo
+    public boolean getIsActive() { return isActive; }
+
+    //Método para obtener el valor de inventario
+    public double getInventoryValue(){ return (unitPrice * unitsInStock); }
     //Métodos para establecer las variables de instancia
 
     //Método para establecer el número de item
@@ -55,17 +61,20 @@ public class Product {
     }
 
     //Método para establecer el precio unitario del producto
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
+    public void setUnitPrice(double unitPrice) {this.unitPrice = unitPrice;}
+
+    //Método para establecer si el producto está activo
+    public void setActive(boolean active) { isActive = active; }
 
     @Override
     public String toString() {
-        return "Product:" +
+
+        return "Product " + itemNumber + ":" +
                 "\nItem Number: " + itemNumber +
                 "\nProduct Name: '" + productName + '\'' +
                 "\nUnits In Stock: " + unitsInStock +
-                "\nunitPrice: " + unitPrice
+                "\nUnit Price: " + unitPrice +
+                "\nProduct Status: " + (isActive ? "Activo" : "Descatalogado")
                 ;
     }
 }
